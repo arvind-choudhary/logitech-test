@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button {
+  border: unset;
+  background: unset;
+  cursor: pointer;
+}
+
+@layer components {
+  .button {
+    @apply mx-auto max-w-screen-lg bg-slate-200 px-8 py-2;
+  }
+}
