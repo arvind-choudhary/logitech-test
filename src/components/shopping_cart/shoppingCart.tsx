@@ -1,8 +1,5 @@
 import React from 'react';
-import ShoppingCartHeader from './ShoppingCartHeader';
-import ShoppingCartList from './ShoppingCartList';
-import ShoppingCartFooterSection from './ShoppingCartFooter';
-import { ShoppingCartContextProvider, useShoppingCartContext } from './useShoppingCartContext';
+import { ShoppingCartContextProvider } from './useShoppingCartContext';
 import { ShoopingCartContent } from './ShoppingCartLoader';
 
 
