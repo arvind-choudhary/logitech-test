@@ -15,7 +15,28 @@ button {
 }
 
 @layer components {
+  
   .button {
     @apply mx-auto max-w-screen-lg bg-slate-200 px-8 py-2;
   }
+
+  .card {
+    @apply flex-col inline-flex px-2 py-2 min-w-80 min-h-48 gap-2 border-neutral-200 border rounded-md;
+
+    & .card-header {
+      flex: 0.1 1 auto;
+      @apply w-full;
+    }
+
+    & .card-body {
+      flex: 0.8 0 auto;
+      @apply w-full;
+    }
+
+    & .card-footer {
+      flex: 0.1 1 auto;
+      @apply w-full;
+    }
+  }
+
 }
