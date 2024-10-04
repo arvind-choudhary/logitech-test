@@ -25,7 +25,6 @@ export function ShoopingCartContent () {
                         </>
                     )
                 }
-                
             </div>
         </div>
     );
