@@ -14,4 +14,4 @@ git clone https://github.com/arvind-choudhary/logitech-test
 cd your-repo-name
 npm i
 npm run dev
-Project will open in http://localhost:5174/
+Project will open on http://localhost:5174/
