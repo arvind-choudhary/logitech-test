@@ -10,7 +10,7 @@ const ShoppingCartContext = createContext<IShoppingCartContext>({
     isError: false,
     isLoading: false,
     productsInCart: [],
-    onResetCart: () => {},
+    onResetCartProducts: () => {},
     onRemoveProduct: () => {},
 });
 
@@ -23,29 +23,29 @@ export const ShoppingCartContextProvider = (props: ShoppingCartHeaderProps) => {
 
     const onRemoveProduct = useCallback((id: number) => {
         setProductsInCart(prevState => prevState.filter(product => product.id !== id));
-    }, [])
+    }, []);
 
-    const onResetCart = useCallback(() => {
-        setProductsInCart([]);
-    }, [])
+    const onSetProductsFromCart = useCallback(() => {
+        setProductsInCart(cartData.flatMap((cart: ICartInfo) => cart.products) || []);
+    }, [cartData])
+
+    const onResetCartProducts = useCallback(() => onSetProductsFromCart(), [cartData])
 
     useEffect(() => {
         if (!isLoading && !isError) {
             if (data?.carts) {
                 setCartData(data.carts);
-                setProductsInCart(cartData.flatMap((cart: ICartInfo) => cart.products) || []);
+                onSetProductsFromCart()
             }
         }
     }, [data, isLoading, isError])
-
-
     
     return <ShoppingCartContext.Provider value={{
         cartData,
         isError,
         isLoading,
         productsInCart,
-        onResetCart,
+        onResetCartProducts,
         onRemoveProduct
     }}>{props.children}</ShoppingCartContext.Provider>;
 

@@ -20,6 +20,5 @@ export const useFetch = <T>(url: string): { data: T, isError: boolean, isLoading
         };
         fetchData();
     }, []);
-    console.log("isLoading", isLoading)
     return { data, isError, isLoading };
 }
