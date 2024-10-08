@@ -8,10 +8,7 @@ export function ShoopingCartContent () {
     const { isLoading } = useShoppingCartContext();
     return (
         <div className='flex w-full h-full'>
-            
-   
             <div className='grid w-full px-10 py-10'>
-            
                 <ShoppingCartHeader />
                 {
                     isLoading ? (

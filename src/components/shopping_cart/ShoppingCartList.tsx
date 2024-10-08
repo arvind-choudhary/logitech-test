@@ -11,7 +11,7 @@ export default function ShoppingCartList () {
             <RenderListOfItems
                 listofItems={productsInCart}
                 callback={(product) => (
-                    <Card className='md:min-w-full'>
+                    <Card className='md:min-w-full' key={product.uniqueId}>
                         <Card.Header>
                             <p className='font-bold text-wrap'>{product.title}</p>
                         </Card.Header>
@@ -19,7 +19,7 @@ export default function ShoppingCartList () {
                             <p className='font-light text-sm'>${product.price?.toFixed(2) ?? 0}</p>
                         </Card.Body>
                         <Card.Footer>
-                            <Button onClick={() => onRemoveProduct(product.id)}>Remove</Button>
+                            <Button onClick={() => onRemoveProduct(product.uniqueId)}>Remove</Button>
                         </Card.Footer>
                     </Card>
                 )}
