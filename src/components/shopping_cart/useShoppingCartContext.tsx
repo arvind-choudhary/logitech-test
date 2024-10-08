@@ -21,12 +21,18 @@ export const ShoppingCartContextProvider = (props: ShoppingCartHeaderProps) => {
     const [cartData, setCartData] = useState<ICartInfo[]>([]);
     const [productsInCart, setProductsInCart] = useState<ICartProduct[]>([]);
 
-    const onRemoveProduct = useCallback((id: number) => {
-        setProductsInCart(prevState => prevState.filter(product => product.id !== id));
+    const onRemoveProduct = useCallback((uniqueId: string) => {
+        setProductsInCart(prevState => prevState.filter(product => product.uniqueId !== uniqueId));
     }, []);
 
     const onSetProductsFromCart = useCallback(() => {
-        setProductsInCart(cartData.flatMap((cart: ICartInfo) => cart.products) || []);
+        const normalizeProductData = cartData.map((cart) => { 
+            return cart.products.map((product) => {
+                product.uniqueId = `${cart.id}-${product.id}`
+                return product;
+            })
+        }).flat();
+        setProductsInCart(normalizeProductData|| []);
     }, [cartData])
 
     const onResetCartProducts = useCallback(() => onSetProductsFromCart(), [cartData])

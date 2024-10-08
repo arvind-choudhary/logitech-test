@@ -1,4 +1,5 @@
 export type ICartProduct = {
+    uniqueId: string
     "id": number,
     "title": string,
     "price": number,
@@ -37,5 +38,5 @@ export interface IShoppingCartContext {
     isError: boolean;
     productsInCart: ICartProduct[],
     onResetCartProducts: () => void,
-    onRemoveProduct: (id: number) => void
+    onRemoveProduct: (uniqueId: string) => void
 }
