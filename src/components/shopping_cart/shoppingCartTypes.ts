@@ -36,6 +36,6 @@ export interface IShoppingCartContext {
     isLoading: boolean;
     isError: boolean;
     productsInCart: ICartProduct[],
-    onResetCart: () => void,
+    onResetCartProducts: () => void,
     onRemoveProduct: (id: number) => void
 }
